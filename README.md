@@ -36,7 +36,7 @@ The CMake test option is SIGNUMERA_BUILD_TESTS. The library has no mandatory thi
 Read the individual public header before use. It defines widths, representation, valid ranges, rounding, overflow/saturation/wrap behavior, invalid-input handling and whether output is left unchanged on failure. APIs are stateless unless a caller-owned state object is explicitly present.
 
 ## Testing and validation
-4/4 enabled host tests passed.
+4/4 MSVC tests and 4/4 GCC strict-warning tests passed.
 See docs/TESTING.md for reproducible commands, coverage boundaries and hardware status.
 
 ## Resource status
