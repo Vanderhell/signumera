@@ -1,0 +1,4 @@
+#include "goertzel_phase_q.h"
+#include <stddef.h>
+#define CHECK(c) do { if (!(c)) return __LINE__; } while (0)
+int main(void){int16_t x[4]={0,1,0,0};uint32_t p=123u;CHECK(pc_experiment_goertzel_phase_q(x,4u,0,&p)&&p==UINT32_C(0xc0000000));x[0]=1;x[1]=0;CHECK(pc_experiment_goertzel_phase_q(x,4u,0,&p)&&p==0u);x[0]=0;x[1]=0;p=123u;CHECK(!pc_experiment_goertzel_phase_q(x,4u,0,&p)&&p==123u);CHECK(!pc_experiment_goertzel_phase_q(NULL,4u,0,&p)&&p==123u);CHECK(!pc_experiment_goertzel_phase_q(x,17u,0,&p)&&p==123u);CHECK(!pc_experiment_goertzel_phase_q(x,4u,32769,&p)&&p==123u);CHECK(!pc_experiment_goertzel_phase_q(x,4u,-32769,&p)&&p==123u);return 0;}

@@ -1,0 +1,4 @@
+#include "goertzel_mag_q.h"
+#include <stddef.h>
+#define CHECK(c) do { if (!(c)) return __LINE__; } while (0)
+int main(void){uint32_t m=123u;int16_t x[4]={100,0,0,0};CHECK(pc_experiment_goertzel_mag_q(x,4u,0,&m)&&m==100u);x[0]=101;CHECK(pc_experiment_goertzel_mag_q(x,4u,0,&m)&&m==101u);x[0]=102;CHECK(pc_experiment_goertzel_mag_q(x,4u,0,&m)&&m==102u);x[0]=100;CHECK(pc_experiment_goertzel_mag_q(x,4u,32768,&m)&&m==100u);m=123u;CHECK(!pc_experiment_goertzel_mag_q(x,0u,0,&m)&&m==123u);CHECK(!pc_experiment_goertzel_mag_q(NULL,4u,0,&m)&&m==123u);CHECK(!pc_experiment_goertzel_mag_q(x,4u,0,NULL));return 0;}

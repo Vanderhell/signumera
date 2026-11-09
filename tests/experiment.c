@@ -1,0 +1,4 @@
+#include <stdint.h>
+#include <stdio.h>
+#include "../include/pc_ring_contains_window_u32.h"
+int main(void){for(uint32_t n=1;n<=24;n++)for(uint32_t s=0;s<n;s++)for(uint32_t len=0;len<=n;len++)for(uint32_t i=0;i<n;i++){bool got=true;bool expected=((i+n-s)%n)<len;if(!pc_ring_contains_window_u32(s,i,len,n,&got)||got!=expected)return 1;}bool out=true;if(!pc_ring_contains_window_u32(0,0,0,1,&out)||out||!pc_ring_contains_window_u32(0,0,1,1,&out)||!out)return 2;out=true;if(pc_ring_contains_window_u32(0,0,2,1,&out)||!out||pc_ring_contains_window_u32(0,1,0,1,&out)||!out||pc_ring_contains_window_u32(1,0,0,1,&out)||!out||pc_ring_contains_window_u32(0,0,0,1,NULL))return 3;puts("94,900 exhaustive cases (capacity 1..24), empty/full windows, invalid preservation PASS");}
