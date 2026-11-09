@@ -1,6 +1,6 @@
 #include "pc_edge_duty_q.h"
 #include <stddef.h>
-bool rm_edge_duty_q(uint32_t high_ticks, uint32_t period_ticks,
+bool pc_edge_duty_q(uint32_t high_ticks, uint32_t period_ticks,
                     uint32_t *duty_q16)
 {
     uint64_t numerator, quotient, remainder, twice_remainder;

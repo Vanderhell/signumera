@@ -1,6 +1,6 @@
 #include "pc_edge_frequency_q.h"
 #include <stddef.h>
-bool rm_edge_frequency_q(uint32_t timer_hz, uint32_t period_ticks,
+bool pc_edge_frequency_q(uint32_t timer_hz, uint32_t period_ticks,
                          uint32_t *frequency_q16)
 {
     uint64_t numerator, quotient, remainder, twice_remainder;

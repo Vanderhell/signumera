@@ -1,7 +1,7 @@
 #include "pc_wave_cycle_count_u32.h"
 #include <stddef.h>
 
-bool rm_wave_cycle_count_u32(uint32_t *phase_q0_32,
+bool pc_wave_cycle_count_u32(uint32_t *phase_q0_32,
                              uint32_t increment_q0_32,
                              uint32_t *completed_cycles)
 {

@@ -1,4 +1,4 @@
-#include "roundmath/accumulate_square_i32.h"
+/* Held-out cross-family validation source; dependency is outside this product. */
 #include <limits.h>
 #include <stddef.h>
 #include <stdint.h>

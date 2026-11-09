@@ -1,7 +1,7 @@
 #include <limits.h>
 #include <stddef.h>
 #include <stdint.h>
-#include "roundmath/pc_first_difference_i32.h"
+/* Held-out cross-family validation source; dependency is outside this product. */
 
 #define CHECK(x) do { if (!(x)) return __LINE__; } while (0)
 int main(void)
