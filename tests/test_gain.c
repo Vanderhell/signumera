@@ -1,4 +1,4 @@
-#include "../include/pc_fir_gain_nyquist_q.h"
+#include "pc_fir_gain_nyquist_q.h"
 #include <stddef.h>
 #include <limits.h>
 

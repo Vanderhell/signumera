@@ -1,6 +1,6 @@
-#include "primitivecore/signal/filters/pc_iir_biquad_normalize_q.h"
+#include "pc_iir_biquad_normalize_q.h"
 
-#include "primitivecore/fixed_point/arithmetic/q_arithmetic/pc_q_div_round_even.h"
+#include "pc_q_div_round_even.h"
 
 #include <stddef.h>
 

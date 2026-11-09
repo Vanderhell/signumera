@@ -1,4 +1,4 @@
-#include "primitivecore/signal/measurements/pc_pcm_rms_i32.h"
+#include "pc_pcm_rms_i32.h"
 #include <stddef.h>
 
 static uint64_t isqrt_u64(uint64_t value)

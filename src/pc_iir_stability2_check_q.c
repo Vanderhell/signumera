@@ -1,4 +1,4 @@
-#include "primitivecore/signal/filters/pc_iir_stability2_check_q.h"
+#include "pc_iir_stability2_check_q.h"
 
 #include <stddef.h>
 

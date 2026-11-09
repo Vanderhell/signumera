@@ -1,4 +1,4 @@
-#include "primitivecore/signal/filters/fir/pc_fir_antisymmetry_check_q.h"
+#include "pc_fir_antisymmetry_check_q.h"
 
 #include <stddef.h>
 

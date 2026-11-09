@@ -1,4 +1,4 @@
-#include "primitivecore/signal/filters/pc_iir_biquad_dc_q.h"
+#include "pc_iir_biquad_dc_q.h"
 
 #include <limits.h>
 #include <stddef.h>

@@ -1,4 +1,4 @@
-#include "primitivecore/signal/measurements/bounded/pc_pcm_peak_i32.h"
+#include "pc_pcm_peak_i32.h"
 
 bool pc_pcm_peak_i32(const int32_t *samples, size_t count, uint32_t *peak)
 {

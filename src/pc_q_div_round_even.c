@@ -1,4 +1,4 @@
-#include <primitivecore/fixed_point/arithmetic/q_arithmetic/pc_q_div_round_even.h>
+#include "pc_q_div_round_even.h"
 #include <stddef.h>
 
 bool rm_q_div_round_even(int32_t a, int32_t b, unsigned fractional_bits,

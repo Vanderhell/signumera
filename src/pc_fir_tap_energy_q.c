@@ -1,4 +1,4 @@
-#include "primitivecore/signal/filters/fir/pc_fir_tap_energy_q.h"
+#include "pc_fir_tap_energy_q.h"
 
 #include <stddef.h>
 

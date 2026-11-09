@@ -1,4 +1,4 @@
-#include <primitivecore/signal/processing/measurement/pc_edge_duty_q.h>
+#include "pc_edge_duty_q.h"
 #include <stddef.h>
 bool rm_edge_duty_q(uint32_t high_ticks, uint32_t period_ticks,
                     uint32_t *duty_q16)
@@ -15,4 +15,3 @@ bool rm_edge_duty_q(uint32_t high_ticks, uint32_t period_ticks,
     *duty_q16 = (uint32_t)quotient;
     return true;
 }
-

@@ -1,5 +1,5 @@
-#include <primitivecore/signal/processing/measurement/pc_frequency_bin_from_hz_u32.h>
-#include <primitivecore/arithmetic/division/bounded/pc_ratio_round_even_u32.h>
+#include "pc_frequency_bin_from_hz_u32.h"
+#include "pc_ratio_round_even_u32.h"
 #include <limits.h>
 #include <stddef.h>
 

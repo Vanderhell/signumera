@@ -1,4 +1,4 @@
-#include <primitivecore/signal/processing/measurement/pc_wave_cycle_count_u32.h>
+#include "pc_wave_cycle_count_u32.h"
 #include <stddef.h>
 
 bool rm_wave_cycle_count_u32(uint32_t *phase_q0_32,

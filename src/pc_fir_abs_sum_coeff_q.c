@@ -1,4 +1,4 @@
-#include "primitivecore/signal/filters/fir/pc_fir_abs_sum_coeff_q.h"
+#include "pc_fir_abs_sum_coeff_q.h"
 
 #include <stddef.h>
 
