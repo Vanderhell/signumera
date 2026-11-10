@@ -25,6 +25,8 @@ The public API has 20 C99 functions in 20 standalone headers and implementation 
 | `pc_ratio_round_even_u32` | Unsigned ratio rounded nearest-even | `test_ratio` |
 | `pc_wave_cycle_count_u32` | Q0.32 phase advancement and cycle counting | `test_cycle_count` |
 
+`test_differential` additionally checks every API against an independent mathematical reference or set-based model over 100,000 deterministic seeded iterations. The focused per-API targets retain explicit boundary and invalid-input checks.
+
 ## Integration
 
 Include an individual public header and compile its matching `src/*.c` file, or link the `signumera` CMake static library. Public CMake include paths support both `<signumera/signal/pc_...h>` and direct header includes. Check status returns before using output values. Failure and aliasing details are documented in each header.

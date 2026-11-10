@@ -2,7 +2,7 @@
 
 ## Host test suite
 
-CMake builds 18 independent test executables. Together they call all 20 public functions. Checks use explicit conditions and return codes, so validation stays active in Release builds with `NDEBUG`.
+CMake builds 19 independent test executables. Together they call all 20 public functions. Checks use explicit conditions and return codes, so validation stays active in Release builds with `NDEBUG`.
 
 ```sh
 cmake -S . -B build -DSIGNUMERA_BUILD_TESTS=ON -DSIGNUMERA_STRICT_WARNINGS=ON -DCMAKE_BUILD_TYPE=Release
@@ -10,11 +10,11 @@ cmake --build build --parallel
 ctest --test-dir build --output-on-failure
 ```
 
-Coverage includes integer extrema, invalid pointers and lengths, output preservation, wraparound, tie rounding and state transitions. Some tests include long deterministic loops. The suite is not exhaustive across every input tuple, and independent oracle coverage remains limited; see `AUDIT.md`.
+Coverage includes integer extrema, invalid pointers and lengths, output preservation, wraparound, tie rounding and state transitions. `test_differential` runs 100,000 fixed-seed iterations against independent formulas and interval/root models for all APIs. The suite is not exhaustive across every input tuple; see `AUDIT.md` for oracle limitations.
 
 ## Toolchain status
 
-Local GCC 16.1 Release, Clang 19.1.5 Release and MSVC 19.42 Debug/Release strict-warning builds each passed 18/18 CTest tests. MSVC AddressSanitizer Release passed 18/18. UBSan is NOT RUN locally: GCC's MinGW sanitizer runtimes are absent, and the Windows Clang invocation could not link the MSVC runtime. Hosted GitHub Actions for these unpushed changes remains NOT RUN.
+Local GCC 16.1 Release, Clang 19.1.5 Release and MSVC 19.42 Debug/Release strict-warning builds each passed 19/19 CTest tests. MSVC AddressSanitizer Release passed 19/19. UBSan is NOT RUN locally: GCC's MinGW sanitizer runtimes are absent, and the Windows Clang invocation could not link the MSVC runtime. Hosted GitHub Actions for these unpushed changes remains NOT RUN.
 
 ## Hardware
 

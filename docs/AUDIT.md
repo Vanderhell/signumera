@@ -30,14 +30,15 @@ Audit scope: all 20 public headers and implementation units, test target mapping
 - One test had used `assert`, which disappears in Release; it now uses an explicit `CHECK` condition.
 - A composition test had validated unrelated helper logic instead of Signumera functions; it now directly tests edge duty and frequency operations.
 - Fourteen additional API test targets were added, the DC-gain API was added to the gain target, and the unrelated composition test was replaced with direct checks of both edge functions. Together 18 enabled test targets now call all 20 APIs.
+- `test_differential` now performs 100,000 seeded iterations covering all 20 operations. References use long-double mathematical formulas, direct FIR definitions, polynomial roots, and split linear intervals for modular overlap; the fixed-width operations are checked with separately expressed mathematical expectations. Added Q31 gain and signed-division extremes.
 - No confirmed production algorithm defect was found in this pass. No production algorithm was changed.
 
 ## Verification record
 
-- GCC 16.1, C99, strict warnings, Release: **PASS**, 18/18 CTest tests.
-- Clang 19.1.5 (MSVC-compatible driver), C99 strict warnings, Release: **PASS**, 18/18 tests.
-- MSVC 19.42, strict warnings, Debug and Release: **PASS**, 18/18 tests in each configuration.
-- MSVC AddressSanitizer, Release: **PASS**, 18/18 tests.
+- GCC 16.1, C99, strict warnings, Release: **PASS**, 19/19 CTest tests.
+- Clang 19.1.5 (MSVC-compatible driver), C99 strict warnings, Release: **PASS**, 19/19 tests.
+- MSVC 19.42, strict warnings, Debug and Release: **PASS**, 19/19 tests in each configuration.
+- MSVC AddressSanitizer, Release: **PASS**, 19/19 tests.
 - Clang 22.1 Windows GNU-style combined ASan/UBSan build: **NOT RUN**; configuration failed because this invocation selected MSVC linkage but could not locate MSVC runtime libraries.
 - Clang-cl AddressSanitizer attempt: **NOT RUN**; its Windows Debug CRT configuration is unsupported by the installed runtime.
 - GCC ASan/UBSan link: **NOT RUN**; installed MinGW toolchain lacks `libasan` and `libubsan`.
@@ -47,4 +48,4 @@ Audit scope: all 20 public headers and implementation units, test target mapping
 
 ## Remaining limits
 
-The test suite is direct and deterministic but is not yet a comprehensive independent differential/property suite for every numeric function. UBSan and hosted CI for these unpushed changes remain unverified. Therefore this audit does not establish UBSan cleanliness or exhaustive mathematical correctness. Run the configured hosted CI jobs and inspect their actual results before assigning a full-release verdict.
+The seeded differential suite broadens coverage but does not enumerate all possible inputs, and floating-point references have finite precision. UBSan and hosted CI for these unpushed changes remain unverified. Therefore this audit does not establish UBSan cleanliness or exhaustive mathematical correctness. Run the configured hosted CI jobs and inspect their actual results before assigning a full-release verdict.

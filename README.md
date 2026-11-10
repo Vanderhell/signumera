@@ -44,7 +44,7 @@ The CMake test option is SIGNUMERA_BUILD_TESTS. The library has no mandatory thi
 
 ## Validation status
 
-The local GCC 16.1 Release build with strict warnings passed 18/18 CTest targets. A functional ESP32-S3 smoke test invoked all 20 APIs and returned `SIGNUMERA_HW_PASS`. Local MSVC and sanitizer runs are not verified; see the [audit register](docs/AUDIT.md) for exact results and limitations.
+The audit suite includes 19 CTest targets, including a fixed-seed 100,000-iteration independent-reference test for all 20 APIs. GCC, Clang, and MSVC passed; MSVC AddressSanitizer passed. UBSan remains unverified. A functional ESP32-S3 smoke test invoked all 20 APIs and returned `SIGNUMERA_HW_PASS`. See the [audit register](docs/AUDIT.md) for exact configurations and limits.
 
 Detailed overflow, rounding, invalid-input, memory-ownership and state rules are defined by the public headers and API reference. Do not infer them from the product name alone.
 

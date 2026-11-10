@@ -23,10 +23,13 @@ if(SIGNUMERA_BUILD_TESTS)
     test_antisymmetry test_fir_symmetry test_fir_energy
     test_frequency_bin test_iir_biquad_dc test_iir_normalize test_iir_stability
     test_mod_interval test_mod_window_overlap test_pcm_peak test_pcm_rms
-    test_pulse_period test_q_div test_ratio)
+    test_pulse_period test_q_div test_ratio test_differential)
   foreach(test_name IN LISTS SIGNUMERA_TESTS)
     add_executable(signumera_${test_name} tests/${test_name}.c)
     target_link_libraries(signumera_${test_name} PRIVATE signumera)
+    if(UNIX)
+      target_link_libraries(signumera_${test_name} PRIVATE m)
+    endif()
     if(SIGNUMERA_STRICT_WARNINGS)
       if(MSVC)
         target_compile_options(signumera_${test_name} PRIVATE /W4 /WX)
