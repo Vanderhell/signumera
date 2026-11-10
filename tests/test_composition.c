@@ -1,42 +1,21 @@
+#include "pc_edge_duty_q.h"
+#include "pc_edge_frequency_q.h"
 #include <stdint.h>
-
-static uint32_t state = UINT32_C(0x4110C0DE);
-static uint32_t next_u32(void)
-{
-    state ^= state << 13;
-    state ^= state >> 17;
-    state ^= state << 5;
-    return state;
-}
-
-static int free_capacity(uint32_t capacity, uint32_t used, uint32_t *free_count)
-{
-    if (free_count == 0 || used > capacity) return 0;
-    *free_count = capacity - used;
-    return 1;
-}
+#define CHECK(x) do { if (!(x)) return __LINE__; } while (0)
 
 int main(void)
 {
-    uint32_t capacity, used, result, expected, i;
-    for (capacity = 0u; capacity < 256u; ++capacity) {
-        for (used = 0u; used < 256u; ++used) {
-            result = UINT32_C(0xA5A5A5A5);
-            expected = UINT32_C(0xA5A5A5A5);
-            if (free_capacity(capacity, used, &result) != (used <= capacity)) return 1;
-            if (used <= capacity) expected = capacity - used;
-            if (result != expected) return 2;
-        }
-    }
-    result = 77u;
-    if (free_capacity(4u, 5u, &result) || result != 77u) return 3;
-    if (free_capacity(UINT32_MAX, 0u, &result) == 0 || result != UINT32_MAX) return 4;
-    for (i = 0u; i < UINT32_C(1000000); ++i) {
-        capacity = next_u32(); used = next_u32();
-        result = UINT32_C(0x5AA55AA5);
-        if (free_capacity(capacity, used, &result) != (used <= capacity)) return 5;
-        if (used <= capacity && result != capacity - used) return 6;
-        if (used > capacity && result != UINT32_C(0x5AA55AA5)) return 7;
-    }
+    uint32_t duty, frequency;
+    CHECK(pc_edge_duty_q(250u,1000u,&duty) && duty==UINT32_C(16384));
+    CHECK(pc_edge_frequency_q(UINT32_C(1000000),1000u,&frequency) &&
+          frequency==UINT32_C(65536000));
+    CHECK(pc_edge_duty_q(0u,UINT32_MAX,&duty) && duty==0u);
+    CHECK(pc_edge_duty_q(UINT32_MAX,UINT32_MAX,&duty) && duty==UINT32_C(65536));
+    duty=77u; CHECK(!pc_edge_duty_q(1u,0u,&duty) && duty==77u);
+    CHECK(!pc_edge_duty_q(2u,1u,&duty) && duty==77u);
+    CHECK(!pc_edge_duty_q(1u,1u,NULL));
+    frequency=77u; CHECK(!pc_edge_frequency_q(1u,0u,&frequency)&&frequency==77u);
+    CHECK(!pc_edge_frequency_q(UINT32_MAX,1u,&frequency)&&frequency==77u);
+    CHECK(!pc_edge_frequency_q(1u,1u,NULL));
     return 0;
 }

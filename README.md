@@ -44,8 +44,7 @@ The CMake test option is SIGNUMERA_BUILD_TESTS. The library has no mandatory thi
 
 ## Validation status
 
-4/4 MSVC tests and 4/4 GCC strict-warning tests passed.
-See docs/TESTING.md for reproducible commands, coverage boundaries and hardware status.
+The local GCC 16.1 Release build with strict warnings passed 18/18 CTest targets. A functional ESP32-S3 smoke test invoked all 20 APIs and returned `SIGNUMERA_HW_PASS`. Local MSVC and sanitizer runs are not verified; see the [audit register](docs/AUDIT.md) for exact results and limitations.
 
 Detailed overflow, rounding, invalid-input, memory-ownership and state rules are defined by the public headers and API reference. Do not infer them from the product name alone.
 
