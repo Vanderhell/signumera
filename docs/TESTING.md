@@ -18,4 +18,4 @@ Local GCC 16.1 Release, Clang 19.1.5 Release and MSVC 19.42 Debug/Release strict
 
 ## Hardware
 
-A firmware exercising all 20 APIs was compiled with Arduino ESP32 core 3.3.10, uploaded to the connected ESP32-S3 on COM19, and emitted `SIGNUMERA_HW_PASS`. This is a functional smoke test only. It does not measure MCU timing, stack, RAM or flash of a production integration; see `PERFORMANCE.md`.
+A functional firmware exercising all 20 APIs was uploaded to the ESP32-S3 on COM19 and emitted `SIGNUMERA_HW_PASS`. A separate `-Os` benchmark on Arduino core 3.3.10 measured five-repeat cycle medians at 240 MHz and captured linker-map, global-RAM and task-stack-watermark data. The results apply to that benchmark firmware; see `PERFORMANCE.md` for the values and limits.
