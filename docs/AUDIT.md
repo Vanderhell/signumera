@@ -42,10 +42,11 @@ Audit scope: all 20 public headers and implementation units, test target mapping
 - Clang 22.1 Windows GNU-style combined ASan/UBSan build: **NOT RUN**; configuration failed because this invocation selected MSVC linkage but could not locate MSVC runtime libraries.
 - Clang-cl AddressSanitizer attempt: **NOT RUN**; its Windows Debug CRT configuration is unsupported by the installed runtime.
 - GCC ASan/UBSan link: **NOT RUN**; installed MinGW toolchain lacks `libasan` and `libubsan`.
-- UBSan: **NOT RUN** on this host. GitHub Actions exposed a Linux-only test portability error (`NULL` used without `<stddef.h>` in two tests); the explicit includes are now added. CI must be rerun on the follow-up commit before recording hosted sanitizer results.
+- Local UBSan: **NOT RUN** on Windows. GitHub Actions run `42869757367` for commit `35def43`: **PASS** across all eight jobs—GCC and Clang Release, ASan and UBSan configurations, plus MSVC Debug and Release. Each host test job passed 19/19.
+- The preceding hosted run exposed a Linux-only test portability defect (`NULL` without `<stddef.h>` in two test sources); the missing includes were added and the follow-up run passed.
 - ESP32-S3 (identified by esptool, COM19), Arduino ESP32 core 3.3.10: **PASS**, firmware exercised all 20 APIs and printed `SIGNUMERA_HW_PASS`.
 - ESP32-S3 timing, stack, RAM and production-library flash measurements: **NOT MEASURED**.
 
 ## Remaining limits
 
-The seeded differential suite broadens coverage but does not enumerate all possible inputs, and floating-point references have finite precision. UBSan and hosted CI for these unpushed changes remain unverified. Therefore this audit does not establish UBSan cleanliness or exhaustive mathematical correctness. Run the configured hosted CI jobs and inspect their actual results before assigning a full-release verdict.
+The seeded differential suite broadens coverage but does not enumerate all possible inputs, and floating-point references have finite precision. Hosted UBSan passed on GCC and Clang, but this does not constitute exhaustive proof of mathematical correctness.

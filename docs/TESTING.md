@@ -14,7 +14,7 @@ Coverage includes integer extrema, invalid pointers and lengths, output preserva
 
 ## Toolchain status
 
-Local GCC 16.1 Release, Clang 19.1.5 Release and MSVC 19.42 Debug/Release strict-warning builds each passed 19/19 CTest tests. MSVC AddressSanitizer Release passed 19/19. UBSan is NOT RUN locally: GCC's MinGW sanitizer runtimes are absent, and the Windows Clang invocation could not link the MSVC runtime. The first hosted CI run failed Linux builds because two test files lacked `<stddef.h>` for `NULL`; that portability issue has been fixed, and the follow-up hosted run is pending.
+Local GCC 16.1 Release, Clang 19.1.5 Release and MSVC 19.42 Debug/Release strict-warning builds each passed 19/19 CTest tests. MSVC AddressSanitizer Release passed 19/19. UBSan is NOT RUN locally: GCC's MinGW sanitizer runtimes are absent, and the Windows Clang invocation could not link the MSVC runtime. GitHub Actions run `42869757367` (commit `35def43`) passed all eight GCC, Clang, sanitizer, MSVC Debug and MSVC Release jobs, each with 19/19 tests. A preceding run caught and led to fixing two missing `<stddef.h>` includes in test files.
 
 ## Hardware
 
