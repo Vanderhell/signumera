@@ -1,5 +1,6 @@
 #include "pc_edge_duty_q.h"
 #include "pc_edge_frequency_q.h"
+#include <stddef.h>
 #include <stdint.h>
 #define CHECK(x) do { if (!(x)) return __LINE__; } while (0)
 

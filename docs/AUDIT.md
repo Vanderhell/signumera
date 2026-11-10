@@ -42,7 +42,7 @@ Audit scope: all 20 public headers and implementation units, test target mapping
 - Clang 22.1 Windows GNU-style combined ASan/UBSan build: **NOT RUN**; configuration failed because this invocation selected MSVC linkage but could not locate MSVC runtime libraries.
 - Clang-cl AddressSanitizer attempt: **NOT RUN**; its Windows Debug CRT configuration is unsupported by the installed runtime.
 - GCC ASan/UBSan link: **NOT RUN**; installed MinGW toolchain lacks `libasan` and `libubsan`.
-- UBSan: **NOT RUN** on this host. The updated CI defines separate GCC and Clang sanitizer jobs, not yet executed for these unpushed changes.
+- UBSan: **NOT RUN** on this host. GitHub Actions exposed a Linux-only test portability error (`NULL` used without `<stddef.h>` in two tests); the explicit includes are now added. CI must be rerun on the follow-up commit before recording hosted sanitizer results.
 - ESP32-S3 (identified by esptool, COM19), Arduino ESP32 core 3.3.10: **PASS**, firmware exercised all 20 APIs and printed `SIGNUMERA_HW_PASS`.
 - ESP32-S3 timing, stack, RAM and production-library flash measurements: **NOT MEASURED**.
 

@@ -1,4 +1,5 @@
 #include "pc_wave_cycle_count_u32.h"
+#include <stddef.h>
 #include <stdint.h>
 #define CHECK(x) do { if (!(x)) return __LINE__; } while (0)
 int main(void)
